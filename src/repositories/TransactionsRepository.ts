@@ -5,6 +5,11 @@ interface Balance {
   outcome: number;
   total: number;
 }
+interface TransactionDTO {
+  title: string;
+  value: number;
+  type: 'income' | 'outcome';
+}
 
 class TransactionsRepository {
   private transactions: Transaction[];
@@ -31,11 +36,7 @@ class TransactionsRepository {
     return balance;
   }
 
-  public create(
-    title: string,
-    value: number,
-    type: 'income' | 'outcome',
-  ): Transaction {
+  public create({ title, value, type }: TransactionDTO): Transaction {
     const transaction = new Transaction({ title, value, type });
     this.transactions.push(transaction);
     return transaction;

@@ -23,7 +23,7 @@ class CreateTransactionService {
         'Not be able to create outcome transaction without a valid balance',
       );
     }
-    return this.transactionsRepository.create(title, value, type);
+    return this.transactionsRepository.create({ title, value, type });
   }
 }
 
